@@ -738,32 +738,10 @@ body.light-theme{
 }
 
 
-/* Header */
-
-/* Header JavaScript Styles */
-
-/* Search */
-
-/* Form JavaScript styles */
-
-/* Featured articles */
-
-/* Featured articles - Sidebar */
-
-/* Quick read */
-
-/* Quick read - Swiper */
-
-/* Older posts */
-
-/* Popular tags */
-
-/* Newsletter */
-
-/* Footer */
-
-/* Scrollbar styles */
-
-/* Blog post */
-
-/* Media queries */
+#welcomeMessage {
+    font-size: 16px;
+    color: #007BFF;
+    text-align: right;
+    margin: 10px 20px 0 0;
+  }
+  
