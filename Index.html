@@ -14,10 +14,18 @@
   <!-- Header -->
   <header class="header" id="header">
     <nav class="navbar container">
-      <a href="index.html">
-        <h2 class="logo">Steven's Blog</h2>
-      </a>
 
+      <!-- Blog title + Welcome message -->
+      <div class="brand-group" style="display: flex; align-items: center; gap: 1rem;">
+        <a href="index.html">
+          <h2 class="logo" style="margin: 0;">Steven's Blog</h2>
+        </a>
+        <div id="welcomeWrapper" style="display: none;">
+          <span id="welcomeMessage" style="color: #007BFF; font-weight: 500; font-size: 14px;"></span>
+        </div>
+      </div>
+
+      <!-- Main menu -->
       <div class="menu" id="menu">
         <ul class="list">
           <li class="list-item"><a href="#" class="list-link current">Home</a></li>
@@ -32,12 +40,10 @@
           <li class="list-item" id="signupLink">
             <a href="signup.html" class="list-link screen-lg-hidden">Sign Up</a>
           </li>
-          <li class="list-item" id="welcomeWrapper" style="display: none;">
-            <span class="list-link" id="welcomeMessage"></span>
-          </li>
         </ul>
       </div>
 
+      <!-- Right-side controls -->
       <div class="list list-right">
         <button class="btn place-items-center" id="theme-toggle-btn">
           <i class="ri-close-line sun-icon"></i>
@@ -61,7 +67,7 @@
     </nav>
   </header>
 
-  <!-- Search -->
+  <!-- Search Form -->
   <div class="search-form-container container" id="search-form-container">
     <div class="form-container-inner">
       <form action="" class="form">
@@ -77,7 +83,7 @@
     </button>
   </div>
 
-  <!-- Featured articles -->
+  <!-- Featured Articles -->
   <section class="featured-articles section section-header-offset">
     <div class="featured-articles-container container d-grid">
       <div class="featured-content d-grid">
@@ -88,7 +94,6 @@
           <span class="headline-description">Apple announces a new partnership...</span>
         </div>
 
-        <!-- Sample featured articles -->
         <a href="./post.html" class="article featured-article featured-article-1">
           <img src="./assets/images/featured/featured-1.jpg" alt="" class="article-image" />
           <span class="article-category">Technology</span>
@@ -101,13 +106,11 @@
             <h3 class="title article-title">Is VR the future?</h3>
           </div>
         </a>
-        <!-- Add more articles as needed -->
       </div>
 
       <!-- Sidebar -->
       <div class="sidebar d-grid">
         <h3 class="title featured-content-title">Trending news</h3>
-        <!-- Sample trending article -->
         <a href="#" class="trending-news-box">
           <div class="trending-news-img-box">
             <span class="trending-number place-items-center">01</span>
@@ -126,13 +129,24 @@
     </div>
   </section>
 
-  <!-- Quick read -->
+  <!-- Quick Read -->
   <section class="quick-read section">
     <div class="container">
       <h2 class="title section-title" data-name="Quick read">Quick read</h2>
       <div class="swiper">
         <div class="swiper-wrapper">
-          <!-- Add your quick read articles here -->
+          <!-- ✅ Example Slide -->
+          <a href="#" class="article swiper-slide">
+            <img src="./assets/images/quick_read/quick_read_1.jpg" alt="Quick Read 1" class="article-image">
+            <div class="article-data-container">
+              <div class="article-data">
+                <span>APRIL 12TH 2025</span>
+                <span class="article-data-spacer"></span>
+                <span>2 Min read</span>
+              </div>
+              <h3 class="title article-title">How to Make Your Code Beautiful</h3>
+            </div>
+          </a>
         </div>
         <div class="swiper-button-prev swiper-controls"></div>
         <div class="swiper-button-next swiper-controls"></div>
@@ -147,24 +161,26 @@
 
   <!-- Welcome Message Script -->
   <script>
-    const welcomeBox = document.getElementById("welcomeMessage");
-    const welcomeWrapper = document.getElementById("welcomeWrapper");
-    const signinLink = document.getElementById("signinLink");
-    const signupLink = document.getElementById("signupLink");
+    document.addEventListener("DOMContentLoaded", function () {
+      const welcomeBox = document.getElementById("welcomeMessage");
+      const welcomeWrapper = document.getElementById("welcomeWrapper");
+      const signinLink = document.getElementById("signinLink");
+      const signupLink = document.getElementById("signupLink");
 
-    const user = JSON.parse(localStorage.getItem("loggedInUser"));
+      const user = JSON.parse(localStorage.getItem("loggedInUser"));
 
-    if (user) {
-      welcomeBox.innerText = `Welcome, ${user.name}`;
-      welcomeWrapper.style.display = "inline-block";
-      signinLink.style.display = "none";
-      signupLink.style.display = "none";
-    }
+      if (user && user.name && welcomeBox && welcomeWrapper) {
+        welcomeBox.textContent = `Welcome, ${user.name}`;
+        welcomeWrapper.style.display = "flex";
+        if (signinLink) signinLink.style.display = "none";
+        if (signupLink) signupLink.style.display = "none";
+      }
 
-    function logout() {
-      localStorage.removeItem("loggedInUser");
-      window.location.reload();
-    }
+      window.logout = function () {
+        localStorage.removeItem("loggedInUser");
+        window.location.reload();
+      };
+    });
   </script>
 </body>
 </html>
