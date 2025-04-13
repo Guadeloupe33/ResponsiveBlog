@@ -37,3 +37,7 @@ A dynamic and responsive blog website built with HTML, CSS, and JavaScript. User
 1. Clone the repo:
    ```bash
    git clone https://github.com/yourusername/stevens-blog.git
+   ## 🖼 Screenshot
+
+![Homepage Screenshot](./assets/images/final%20project%20screenshot.png)
+
